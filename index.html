@@ -574,7 +574,7 @@ section { padding: 96px 0; }
     </div>
     <div class="form-wrapper">
       <!-- Progress Bar -->
-      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="7">
+      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="8">
         <div class="progress-step active" data-step="1"></div>
         <div class="progress-step" data-step="2"></div>
         <div class="progress-step" data-step="3"></div>
@@ -582,6 +582,7 @@ section { padding: 96px 0; }
         <div class="progress-step" data-step="5"></div>
         <div class="progress-step" data-step="6"></div>
         <div class="progress-step" data-step="7"></div>
+        <div class="progress-step" data-step="8"></div>
       </div>
 
       <!-- STEP 1: Homeowner qualifier -->
@@ -694,16 +695,9 @@ section { padding: 96px 0; }
         <p class="step-sub">This helps us find the most accurate coverage options for you.</p>
         <div class="input-row">
           <div class="input-group">
-            <label for="ageRange">Age Range</label>
-            <select id="ageRange">
-              <option value="">Select...</option>
-              <option value="18-25">18 – 25</option>
-              <option value="26-35">26 – 35</option>
-              <option value="36-45">36 – 45</option>
-              <option value="46-55">46 – 55</option>
-              <option value="56-65">56 – 65</option>
-              <option value="65+">65+</option>
-            </select>
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="e.g. 34" min="18" max="99" autocomplete="off">
+            <div class="error-msg" id="ageError">Please enter your age (18–99)</div>
           </div>
           <div class="input-group">
             <label for="tobacco">Tobacco Use</label>
@@ -744,19 +738,8 @@ section { padding: 96px 0; }
           </div>
           <div class="input-group">
             <label for="weight">Weight (lbs)</label>
-            <select id="weight">
-              <option value="">Select...</option>
-              <option value="under-100">Under 100</option>
-              <option value="100-120">100 – 120</option>
-              <option value="120-140">120 – 140</option>
-              <option value="140-160">140 – 160</option>
-              <option value="160-180">160 – 180</option>
-              <option value="180-200">180 – 200</option>
-              <option value="200-220">200 – 220</option>
-              <option value="220-250">220 – 250</option>
-              <option value="250-300">250 – 300</option>
-              <option value="300+">300+</option>
-            </select>
+            <input type="number" id="weight" placeholder="e.g. 175" min="50" max="600" autocomplete="off">
+            <div class="error-msg" id="weightError">Please enter your weight in lbs</div>
           </div>
         </div>
         <div class="input-group" style="margin-top:8px;">
@@ -812,8 +795,8 @@ section { padding: 96px 0; }
 
       <!-- STEP 7: Contact info -->
       <div class="form-step" data-step="7">
-        <h3>Last step — how can we reach you?</h3>
-        <p class="step-sub">A Mortgage Clarity advisor will reach out within one business day.</p>
+        <h3>Request your personal consultation call</h3>
+        <p class="step-sub">By submitting, you are requesting a phone call from a Mortgage Clarity advisor. We will only call you — this is your choice.</p>
         <div class="input-row">
           <div class="input-group">
             <label for="firstName">First Name</label>
@@ -855,13 +838,32 @@ section { padding: 96px 0; }
         <div class="consent-group">
           <label class="consent-label">
             <input type="checkbox" id="consent">
-            I agree to be contacted by a Mortgage Clarity advisor to discuss my options. No spam, ever.
+            <span>I am requesting a phone call from a Mortgage Clarity advisor. I understand an advisor will call me at the number above to discuss my mortgage protection options. No spam, no selling my information — ever.</span>
           </label>
           <div class="error-msg" id="consentError" style="margin-left: 30px;">You must agree before submitting</div>
         </div>
         <div class="form-nav" style="flex-direction: column; gap: 8px;">
+          <button type="button" class="btn-next" id="verifyPhoneBtn" disabled>
+            Verify My Phone Number
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </button>
+          <button type="button" class="btn-back" style="text-align: center;">← Back</button>
+        </div>
+      </div>
+
+      <!-- STEP 8: SMS Verification -->
+      <div class="form-step" data-step="8">
+        <h3>Verify your phone number</h3>
+        <p class="step-sub">We sent a 6-digit code to <strong id="phoneDisplay"></strong>. Enter it below to confirm your request.</p>
+        <div class="input-group">
+          <label for="smsCode">Verification Code</label>
+          <input type="text" id="smsCode" placeholder="e.g. 123456" maxlength="6" autocomplete="one-time-code" inputmode="numeric" style="text-align:center; font-size:1.3rem; letter-spacing:0.3em; font-weight:700;">
+          <div class="error-msg" id="smsCodeError">Please enter the 6-digit code we sent to your phone</div>
+        </div>
+        <p style="font-size:0.85rem; color:#888; margin-bottom:16px;">Didn't receive it? <button type="button" id="resendCode" style="color:#C9962A; font-weight:600; text-decoration:underline; background:none; border:none; cursor:pointer; font-size:0.85rem;">Resend code</button></p>
+        <div class="form-nav" style="flex-direction: column; gap: 8px;">
           <button type="button" class="btn-submit" disabled id="submitBtn">
-            Send My Information
+            Confirm &amp; Request My Call
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
           <button type="button" class="btn-back" style="text-align: center;">← Back</button>
@@ -887,8 +889,8 @@ section { padding: 96px 0; }
       <!-- CONFIRMATION -->
       <div class="form-confirm" id="confirmation">
         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#2a8c5a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke-width="2"/></svg>
-        <h3>You're all set, <span class="confirm-name" id="confirmName"></span>.</h3>
-        <p>A Mortgage Clarity advisor will reach out within one business day to walk you through your options — no pressure, no obligation.</p>
+        <h3>Your call is confirmed, <span class="confirm-name" id="confirmName"></span>.</h3>
+        <p>You've requested a consultation call. A Mortgage Clarity advisor will call you within one business day at the number you provided — no pressure, no obligation. This call happens because you asked for it.</p>
         <p style="margin-top: 16px; font-size: 0.9rem; color: #888;">Check your email for a short overview of what to expect during the call.</p>
       </div>
     </div>
@@ -976,7 +978,7 @@ section { padding: 96px 0; }
   <input type="hidden" name="phone">
   <input type="hidden" name="email">
   <input type="hidden" name="call-time">
-  <input type="hidden" name="age-range">
+  <input type="hidden" name="age">
   <input type="hidden" name="tobacco">
   <input type="hidden" name="height">
   <input type="hidden" name="weight">
@@ -986,6 +988,8 @@ section { padding: 96px 0; }
   <input type="hidden" name="employment">
   <input type="hidden" name="disability-ss">
   <input type="hidden" name="favorite-hobby">
+  <input type="hidden" name="lead-tier">
+  <input type="hidden" name="lead-flags">
 </form>
 
 <footer class="footer">
@@ -1035,7 +1039,6 @@ section { padding: 96px 0; }
     btn.addEventListener('click', function() {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      // Close all
       document.querySelectorAll('.faq-item.open').forEach(function(el) {
         el.classList.remove('open');
         el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
@@ -1050,7 +1053,9 @@ section { padding: 96px 0; }
   // ---- Multi-Step Form ----
   const formData = {};
   let currentStep = 1;
-  const totalSteps = 7;
+  const totalSteps = 8;
+  let smsVerificationCode = '';
+  let smsCodeSentAt = 0;
 
   // Populate state dropdown
   var states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
@@ -1071,7 +1076,6 @@ section { padding: 96px 0; }
     var step = getStepEl(n);
     if (step) step.classList.add('active');
 
-    // Update progress
     for (var i = 1; i <= totalSteps; i++) {
       var p = getProgressEl(i);
       p.classList.remove('active', 'completed');
@@ -1096,7 +1100,7 @@ section { padding: 96px 0; }
 
   // --- Option button handling ---
   document.querySelectorAll('.option-group').forEach(function(group) {
-    var type = group.dataset.type; // radio or checkbox
+    var type = group.dataset.type;
     var name = group.dataset.name;
 
     group.querySelectorAll('.option-btn').forEach(function(btn) {
@@ -1106,7 +1110,6 @@ section { padding: 96px 0; }
           btn.classList.add('selected');
           formData[name] = btn.dataset.value;
         } else {
-          // checkbox logic with "none" exclusivity
           if (btn.dataset.value === 'none') {
             group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
             btn.classList.add('selected');
@@ -1139,16 +1142,18 @@ section { padding: 96px 0; }
 
     // Step 5: About You — need age, tobacco, height, weight, health-concerns
     if (currentStep === 5) {
-      var ageOk = document.getElementById('ageRange').value !== '';
+      var ageVal = parseInt(document.getElementById('age').value, 10);
+      var ageOk = ageVal >= 18 && ageVal <= 99;
       var tobaccoOk = document.getElementById('tobacco').value !== '';
       var heightOk = document.getElementById('height').value !== '';
-      var weightOk = document.getElementById('weight').value !== '';
+      var weightVal = parseInt(document.getElementById('weight').value, 10);
+      var weightOk = weightVal >= 50 && weightVal <= 600;
       var healthOk = step.querySelector('[data-name="health-concerns"] .option-btn.selected') !== null;
       nextBtn.disabled = !(ageOk && tobaccoOk && heightOk && weightOk && healthOk);
       return;
     }
 
-    // Step 6: Location & Employment — need city, state, employment, disability-ss
+    // Step 6: Location & Employment
     if (currentStep === 6) {
       var cityOk = document.getElementById('city').value.trim().length > 0;
       var stateOk = document.getElementById('state').value !== '';
@@ -1157,12 +1162,17 @@ section { padding: 96px 0; }
       nextBtn.disabled = !(cityOk && stateOk && empOk && disOk);
       return;
     }
+
+    // Step 7: Contact info — enable "Verify My Phone Number" button
+    if (currentStep === 7) {
+      validateStep7();
+      return;
+    }
   }
 
   // --- Next / Back buttons ---
   document.querySelectorAll('.btn-next').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      // Step-specific logic
       if (currentStep === 1 && formData.homeowner === 'no') {
         showExit('exitHomeowner');
         return;
@@ -1173,6 +1183,11 @@ section { padding: 96px 0; }
           showExit('exitDependents');
           return;
         }
+      }
+      // Step 7: trigger SMS verification instead of normal advance
+      if (currentStep === 7) {
+        sendSmsCode();
+        return;
       }
       if (currentStep < totalSteps) {
         showStep(currentStep + 1);
@@ -1188,7 +1203,7 @@ section { padding: 96px 0; }
     });
   });
 
-  // --- Step 5: Contact form validation ---
+  // --- Step 7: Contact form validation ---
   var firstNameEl = document.getElementById('firstName');
   var lastNameEl = document.getElementById('lastName');
   var phoneEl = document.getElementById('phone');
@@ -1196,18 +1211,19 @@ section { padding: 96px 0; }
   var callTimeEl = document.getElementById('callTime');
   var hobbyEl = document.getElementById('hobby');
   var consentEl = document.getElementById('consent');
+  var verifyPhoneBtn = document.getElementById('verifyPhoneBtn');
   var submitBtn = document.getElementById('submitBtn');
 
   function validateStep7() {
     var valid = true;
     valid = firstNameEl.value.trim().length > 0 && valid;
     valid = lastNameEl.value.trim().length > 0 && valid;
-    valid = phoneEl.value.trim().length >= 7 && valid;
+    valid = phoneEl.value.replace(/\D/g, '').length >= 10 && valid;
     valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim()) && valid;
     valid = callTimeEl.value !== '' && valid;
     valid = hobbyEl.value.trim().length > 0 && valid;
     valid = consentEl.checked && valid;
-    submitBtn.disabled = !valid;
+    verifyPhoneBtn.disabled = !valid;
     return valid;
   }
 
@@ -1218,8 +1234,10 @@ section { padding: 96px 0; }
   consentEl.addEventListener('change', validateStep7);
 
   // Step 5 & 6 field listeners for enabling Next button
-  ['ageRange','tobacco','height','weight'].forEach(function(id) {
-    document.getElementById(id).addEventListener('change', updateNextButton);
+  ['age','tobacco','height','weight'].forEach(function(id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', updateNextButton);
+    el.addEventListener('change', updateNextButton);
   });
   ['city','state','employment'].forEach(function(id) {
     var el = document.getElementById(id);
@@ -1246,76 +1264,158 @@ section { padding: 96px 0; }
     document.getElementById(errorId).classList.remove('visible');
   }
 
-  // --- Submit ---
-  submitBtn.addEventListener('click', function() {
-    // Clear previous errors
-    [['firstName','firstNameError'], ['lastName','lastNameError'], ['phone','phoneError'], ['email','emailError'], ['callTime','callTimeError'], ['hobby','hobbyError']].forEach(function(pair) {
-      clearFieldError(document.getElementById(pair[0]), pair[1]);
-    });
-    document.getElementById('consentError').classList.remove('visible');
+  // --- SMS Verification ---
+  function sendSmsCode() {
+    var phone = phoneEl.value.replace(/\D/g, '');
+    verifyPhoneBtn.disabled = true;
+    verifyPhoneBtn.textContent = 'Sending code\u2026';
 
-    var hasError = false;
-    if (!firstNameEl.value.trim()) { showFieldError(firstNameEl, 'firstNameError'); hasError = true; }
-    if (!lastNameEl.value.trim()) { showFieldError(lastNameEl, 'lastNameError'); hasError = true; }
-    if (phoneEl.value.replace(/\D/g, '').length < 7) { showFieldError(phoneEl, 'phoneError'); hasError = true; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showFieldError(emailEl, 'emailError'); hasError = true; }
-    if (!callTimeEl.value) { showFieldError(callTimeEl, 'callTimeError'); hasError = true; }
-    if (!hobbyEl.value.trim()) { showFieldError(hobbyEl, 'hobbyError'); hasError = true; }
-    if (!consentEl.checked) { document.getElementById('consentError').classList.add('visible'); hasError = true; }
-
-    if (hasError) return;
-
-    formData.firstName = firstNameEl.value.trim();
-    formData.lastName = lastNameEl.value.trim();
-    formData.phone = phoneEl.value.trim();
-    formData.email = emailEl.value.trim();
-    formData.callTime = callTimeEl.value;
-    formData.hobby = hobbyEl.value.trim();
-
-    // Populate hidden Netlify form
-    var nf = document.getElementById('netlifyForm');
-    nf.querySelector('[name="homeowner"]').value = formData.homeowner || '';
-    nf.querySelector('[name="dependents"]').value = (Array.isArray(formData.dependents) ? formData.dependents.join(', ') : formData.dependents) || '';
-    nf.querySelector('[name="concern"]').value = formData.concern || '';
-    nf.querySelector('[name="mortgage-amount"]').value = formData['mortgage-amount'] || '';
-    nf.querySelector('[name="first-name"]').value = formData.firstName;
-    nf.querySelector('[name="last-name"]').value = formData.lastName;
-    nf.querySelector('[name="phone"]').value = formData.phone;
-    nf.querySelector('[name="email"]').value = formData.email;
-    nf.querySelector('[name="call-time"]').value = formData.callTime;
-    // New qualifying fields
-    nf.querySelector('[name="age-range"]').value = document.getElementById('ageRange').value;
-    nf.querySelector('[name="tobacco"]').value = document.getElementById('tobacco').value;
-    nf.querySelector('[name="height"]').value = document.getElementById('height').value;
-    nf.querySelector('[name="weight"]').value = document.getElementById('weight').value;
-    nf.querySelector('[name="health-concerns"]').value = formData['health-concerns'] || '';
-    nf.querySelector('[name="city"]').value = document.getElementById('city').value.trim();
-    nf.querySelector('[name="state"]').value = document.getElementById('state').value;
-    nf.querySelector('[name="employment"]').value = document.getElementById('employment').value;
-    nf.querySelector('[name="disability-ss"]').value = formData['disability-ss'] || '';
-    nf.querySelector('[name="favorite-hobby"]').value = formData.hobby;
-
-    // Submit to Netlify via fetch
-    var body = new URLSearchParams(new FormData(nf)).toString();
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Sending\u2026';
-
-    fetch('/', {
+    fetch('/.netlify/functions/send-sms-code', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone })
     }).then(function(res) {
       if (res.ok) {
-        showConfirmation();
+        smsCodeSentAt = Date.now();
+        // Store form data from step 7
+        formData.firstName = firstNameEl.value.trim();
+        formData.lastName = lastNameEl.value.trim();
+        formData.phone = phoneEl.value.trim();
+        formData.email = emailEl.value.trim();
+        formData.callTime = callTimeEl.value;
+        formData.hobby = hobbyEl.value.trim();
+        // Show phone number on verification screen
+        document.getElementById('phoneDisplay').textContent = phoneEl.value.trim();
+        showStep(8);
       } else {
-        alert('Something went wrong. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send My Information <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        alert('Could not send verification code. Please try again.');
       }
     }).catch(function() {
       alert('Network error. Please check your connection and try again.');
+    }).finally(function() {
+      verifyPhoneBtn.disabled = false;
+      verifyPhoneBtn.innerHTML = 'Verify My Phone Number <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+    });
+  }
+
+  // Resend code button
+  document.getElementById('resendCode').addEventListener('click', function() {
+    // Rate limit: at least 30s between sends
+    if (Date.now() - smsCodeSentAt < 30000) {
+      alert('Please wait at least 30 seconds before requesting a new code.');
+      return;
+    }
+    sendSmsCode();
+  });
+
+  // SMS code input validation
+  var smsCodeEl = document.getElementById('smsCode');
+  smsCodeEl.addEventListener('input', function() {
+    smsCodeEl.value = smsCodeEl.value.replace(/\D/g, '').substring(0, 6);
+    submitBtn.disabled = smsCodeEl.value.length !== 6;
+  });
+
+  // --- Lead Tier Bucketing ---
+  function calculateLeadTier() {
+    var flags = [];
+    var age = parseInt(document.getElementById('age').value, 10);
+    var weight = parseInt(document.getElementById('weight').value, 10);
+    var tobacco = document.getElementById('tobacco').value;
+    var healthConcerns = formData['health-concerns'];
+
+    if (tobacco === 'yes') flags.push('tobacco');
+    if (weight >= 250) flags.push('heavy-weight');
+    if (healthConcerns === 'yes') flags.push('medical');
+    if (age >= 56) flags.push('senior');
+
+    // Determine tier based on flags
+    var tier = 'standard';
+    if (flags.length === 0) {
+      tier = 'preferred';
+    } else if (flags.length === 1) {
+      tier = 'standard';
+    } else {
+      tier = 'substandard';
+    }
+
+    return { tier: tier, flags: flags };
+  }
+
+  // --- Submit ---
+  submitBtn.addEventListener('click', function() {
+    var code = smsCodeEl.value.trim();
+    if (code.length !== 6) {
+      showFieldError(smsCodeEl, 'smsCodeError');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Verifying\u2026';
+
+    // Verify SMS code
+    var phone = phoneEl.value.replace(/\D/g, '');
+    fetch('/.netlify/functions/verify-sms-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone, code: code })
+    }).then(function(res) {
+      if (!res.ok) throw new Error('Invalid code');
+      return res.json();
+    }).then(function(data) {
+      if (!data.verified) {
+        showFieldError(smsCodeEl, 'smsCodeError');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Confirm &amp; Request My Call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        return;
+      }
+
+      // Calculate lead tier
+      var leadInfo = calculateLeadTier();
+
+      // Populate hidden Netlify form
+      var nf = document.getElementById('netlifyForm');
+      nf.querySelector('[name="homeowner"]').value = formData.homeowner || '';
+      nf.querySelector('[name="dependents"]').value = (Array.isArray(formData.dependents) ? formData.dependents.join(', ') : formData.dependents) || '';
+      nf.querySelector('[name="concern"]').value = formData.concern || '';
+      nf.querySelector('[name="mortgage-amount"]').value = formData['mortgage-amount'] || '';
+      nf.querySelector('[name="first-name"]').value = formData.firstName;
+      nf.querySelector('[name="last-name"]').value = formData.lastName;
+      nf.querySelector('[name="phone"]').value = formData.phone;
+      nf.querySelector('[name="email"]').value = formData.email;
+      nf.querySelector('[name="call-time"]').value = formData.callTime;
+      nf.querySelector('[name="age"]').value = document.getElementById('age').value;
+      nf.querySelector('[name="tobacco"]').value = document.getElementById('tobacco').value;
+      nf.querySelector('[name="height"]').value = document.getElementById('height').value;
+      nf.querySelector('[name="weight"]').value = document.getElementById('weight').value;
+      nf.querySelector('[name="health-concerns"]').value = formData['health-concerns'] || '';
+      nf.querySelector('[name="city"]').value = document.getElementById('city').value.trim();
+      nf.querySelector('[name="state"]').value = document.getElementById('state').value;
+      nf.querySelector('[name="employment"]').value = document.getElementById('employment').value;
+      nf.querySelector('[name="disability-ss"]').value = formData['disability-ss'] || '';
+      nf.querySelector('[name="favorite-hobby"]').value = formData.hobby;
+      nf.querySelector('[name="lead-tier"]').value = leadInfo.tier;
+      nf.querySelector('[name="lead-flags"]').value = leadInfo.flags.join(', ');
+
+      submitBtn.innerHTML = 'Submitting\u2026';
+
+      var body = new URLSearchParams(new FormData(nf)).toString();
+      return fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      });
+    }).then(function(res) {
+      if (res && res.ok) {
+        showConfirmation();
+      } else if (res) {
+        alert('Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Confirm &amp; Request My Call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+      }
+    }).catch(function() {
+      showFieldError(smsCodeEl, 'smsCodeError');
       submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Send My Information <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+      submitBtn.innerHTML = 'Confirm &amp; Request My Call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
     });
   });
 
