@@ -65,6 +65,11 @@ section { padding: 96px 0; }
   background: linear-gradient(165deg, #0F2240 0%, #162d52 55%, #1a3460 100%);
   position: relative; overflow: hidden; padding: 120px 0 96px;
 }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 768px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero-image { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.hero-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+@media (max-width: 768px) { .hero-image { display: none; } }
 .hero-geo {
   position: absolute; inset: 0; overflow: hidden; opacity: 0.07;
 }
@@ -107,6 +112,8 @@ section { padding: 96px 0; }
 
 /* ========== EDUCATION ========== */
 .education { background: #FAF9F6; }
+.edu-image { border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+.edu-image img { width: 100%; height: 300px; object-fit: cover; display: block; }
 .education-header { text-align: center; margin-bottom: 56px; }
 .education-header p { margin: 0 auto; color: #555; }
 .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
@@ -206,6 +213,11 @@ section { padding: 96px 0; }
 }
 .badge-icon svg { width: 24px; height: 24px; color: #0F2240; }
 .badge-label { font-size: 0.85rem; font-weight: 600; color: #0F2240; text-align: center; }
+.trust-image {
+  border-radius: 16px; overflow: hidden; margin-bottom: 56px;
+  max-width: 900px; margin-left: auto; margin-right: auto;
+}
+.trust-image img { width: 100%; height: 360px; object-fit: cover; display: block; }
 .about-blurb {
   max-width: 720px; margin: 48px auto 0; text-align: center;
 }
@@ -386,16 +398,23 @@ section { padding: 96px 0; }
 <section class="hero" id="hero">
   <div class="hero-geo" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-badge">Mortgage Protection for Homeowners</div>
-    <h1>Your mortgage is likely your biggest financial&nbsp;commitment. <em>Let's make sure it's&nbsp;protected.</em></h1>
-    <p class="hero-sub">We help you understand if mortgage protection insurance is right for your family — no pressure, no jargon, just clarity.</p>
-    <a href="#qualify" class="btn-primary">
-      See If I Qualify
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <div class="hero-trust">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Only for homeowners with an active mortgage
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Mortgage Protection for Homeowners</div>
+        <h1>Your mortgage is likely your biggest financial&nbsp;commitment. <em>Let's make sure it's&nbsp;protected.</em></h1>
+        <p class="hero-sub">We help you understand if mortgage protection insurance is right for your family — no pressure, no jargon, just clarity.</p>
+        <a href="#qualify" class="btn-primary">
+          See If I Qualify
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <div class="hero-trust">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Only for homeowners with an active mortgage
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Beautiful family home" loading="eager">
+      </div>
     </div>
   </div>
 </section>
@@ -407,6 +426,9 @@ section { padding: 96px 0; }
       <span class="section-label">Understand Your Options</span>
       <h2>What Is Mortgage Protection Insurance?</h2>
       <p>A straightforward explanation — so you can decide what's right for your family.</p>
+    </div>
+    <div class="edu-image">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80" alt="Couple reviewing financial documents together at home" loading="lazy">
     </div>
     <div class="edu-grid">
       <div class="edu-content">
@@ -476,6 +498,9 @@ section { padding: 96px 0; }
       <span class="section-label">Real Homeowners</span>
       <h2>Why Homeowners Trust Mortgage Clarity</h2>
       <p>We let our approach speak for itself.</p>
+    </div>
+    <div class="trust-image">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Warm family home interior" loading="lazy">
     </div>
     <div class="testimonials">
       <div class="testimonial">
@@ -549,12 +574,14 @@ section { padding: 96px 0; }
     </div>
     <div class="form-wrapper">
       <!-- Progress Bar -->
-      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="7">
         <div class="progress-step active" data-step="1"></div>
         <div class="progress-step" data-step="2"></div>
         <div class="progress-step" data-step="3"></div>
         <div class="progress-step" data-step="4"></div>
         <div class="progress-step" data-step="5"></div>
+        <div class="progress-step" data-step="6"></div>
+        <div class="progress-step" data-step="7"></div>
       </div>
 
       <!-- STEP 1: Homeowner qualifier -->
@@ -601,26 +628,26 @@ section { padding: 96px 0; }
         </div>
       </div>
 
-      <!-- STEP 3: Concern -->
+      <!-- STEP 3: Concern / Intent -->
       <div class="form-step" data-step="3">
-        <h3>What's your biggest concern?</h3>
-        <p class="step-sub">There are no wrong answers — this helps us tailor the conversation.</p>
+        <h3>What matters most to you right now?</h3>
+        <p class="step-sub">This helps us understand your situation so we can give you the most relevant guidance.</p>
         <div class="option-group" data-name="concern" data-type="radio">
           <button type="button" class="option-btn" data-value="family-loss">
             <span class="option-radio"></span>
-            My family losing the house if I pass away
+            Making sure my family keeps the house if something happens to me
           </button>
           <button type="button" class="option-btn" data-value="disability">
             <span class="option-radio"></span>
-            My mortgage if I become disabled or seriously ill
+            Protecting my mortgage payments if I become disabled or seriously ill
           </button>
           <button type="button" class="option-btn" data-value="explore">
             <span class="option-radio"></span>
-            I just want to understand my options better
+            Understanding what options exist — I want to be informed
           </button>
           <button type="button" class="option-btn" data-value="second-opinion">
             <span class="option-radio"></span>
-            I already have life insurance but want a second opinion
+            Getting a second opinion on coverage I already have
           </button>
         </div>
         <div class="form-nav">
@@ -661,8 +688,130 @@ section { padding: 96px 0; }
         </div>
       </div>
 
-      <!-- STEP 5: Contact info -->
+      <!-- STEP 5: About You -->
       <div class="form-step" data-step="5">
+        <h3>Tell us a little about yourself</h3>
+        <p class="step-sub">This helps us find the most accurate coverage options for you.</p>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="ageRange">Age Range</label>
+            <select id="ageRange">
+              <option value="">Select...</option>
+              <option value="18-25">18 – 25</option>
+              <option value="26-35">26 – 35</option>
+              <option value="36-45">36 – 45</option>
+              <option value="46-55">46 – 55</option>
+              <option value="56-65">56 – 65</option>
+              <option value="65+">65+</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="tobacco">Tobacco Use</label>
+            <select id="tobacco">
+              <option value="">Select...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="height">Height</label>
+            <select id="height">
+              <option value="">Select...</option>
+              <option value="4-10">4'10"</option>
+              <option value="4-11">4'11"</option>
+              <option value="5-0">5'0"</option>
+              <option value="5-1">5'1"</option>
+              <option value="5-2">5'2"</option>
+              <option value="5-3">5'3"</option>
+              <option value="5-4">5'4"</option>
+              <option value="5-5">5'5"</option>
+              <option value="5-6">5'6"</option>
+              <option value="5-7">5'7"</option>
+              <option value="5-8">5'8"</option>
+              <option value="5-9">5'9"</option>
+              <option value="5-10">5'10"</option>
+              <option value="5-11">5'11"</option>
+              <option value="6-0">6'0"</option>
+              <option value="6-1">6'1"</option>
+              <option value="6-2">6'2"</option>
+              <option value="6-3">6'3"</option>
+              <option value="6-4">6'4"</option>
+              <option value="6-5">6'5"</option>
+              <option value="6-6">6'6"</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="weight">Weight (lbs)</label>
+            <select id="weight">
+              <option value="">Select...</option>
+              <option value="under-100">Under 100</option>
+              <option value="100-120">100 – 120</option>
+              <option value="120-140">120 – 140</option>
+              <option value="140-160">140 – 160</option>
+              <option value="160-180">160 – 180</option>
+              <option value="180-200">180 – 200</option>
+              <option value="200-220">200 – 220</option>
+              <option value="220-250">220 – 250</option>
+              <option value="250-300">250 – 300</option>
+              <option value="300+">300+</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group" style="margin-top:8px;">
+          <label>Any major health concerns in the last 5 years?</label>
+          <div class="option-group" data-name="health-concerns" data-type="radio" style="gap:8px;">
+            <button type="button" class="option-btn" data-value="yes" style="padding:12px 16px;"><span class="option-radio"></span> Yes</button>
+            <button type="button" class="option-btn" data-value="no" style="padding:12px 16px;"><span class="option-radio"></span> No</button>
+          </div>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back">← Back</button>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 6: Location & Employment -->
+      <div class="form-step" data-step="6">
+        <h3>Where are you located?</h3>
+        <p class="step-sub">Coverage options can vary by state, and this helps us match you accurately.</p>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="e.g. Austin" autocomplete="address-level2">
+          </div>
+          <div class="input-group">
+            <label for="state">State</label>
+            <select id="state"></select>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="employment">Employment Status</label>
+          <select id="employment">
+            <option value="">Select...</option>
+            <option value="full-time">Employed Full-Time</option>
+            <option value="part-time">Employed Part-Time</option>
+            <option value="self-employed">Self-Employed</option>
+            <option value="retired">Retired</option>
+            <option value="unemployed">Unemployed</option>
+          </select>
+        </div>
+        <div class="input-group" style="margin-top:8px;">
+          <label>Currently receiving Disability or Social Security benefits?</label>
+          <div class="option-group" data-name="disability-ss" data-type="radio" style="gap:8px;">
+            <button type="button" class="option-btn" data-value="yes" style="padding:12px 16px;"><span class="option-radio"></span> Yes</button>
+            <button type="button" class="option-btn" data-value="no" style="padding:12px 16px;"><span class="option-radio"></span> No</button>
+          </div>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back">← Back</button>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 7: Contact info -->
+      <div class="form-step" data-step="7">
         <h3>Last step — how can we reach you?</h3>
         <p class="step-sub">A Mortgage Clarity advisor will reach out within one business day.</p>
         <div class="input-row">
@@ -697,6 +846,11 @@ section { padding: 96px 0; }
             <option value="anytime">Anytime works</option>
           </select>
           <div class="error-msg" id="callTimeError">Please select a preferred time</div>
+        </div>
+        <div class="input-group">
+          <label for="hobby">What's your favorite hobby? <span style="font-weight:400;color:#999;">(security question)</span></label>
+          <input type="text" id="hobby" placeholder="e.g. Fishing, Gardening, Reading" autocomplete="off">
+          <div class="error-msg" id="hobbyError">Please share a hobby</div>
         </div>
         <div class="consent-group">
           <label class="consent-label">
@@ -822,6 +976,16 @@ section { padding: 96px 0; }
   <input type="hidden" name="phone">
   <input type="hidden" name="email">
   <input type="hidden" name="call-time">
+  <input type="hidden" name="age-range">
+  <input type="hidden" name="tobacco">
+  <input type="hidden" name="height">
+  <input type="hidden" name="weight">
+  <input type="hidden" name="health-concerns">
+  <input type="hidden" name="city">
+  <input type="hidden" name="state">
+  <input type="hidden" name="employment">
+  <input type="hidden" name="disability-ss">
+  <input type="hidden" name="favorite-hobby">
 </form>
 
 <footer class="footer">
@@ -886,7 +1050,17 @@ section { padding: 96px 0; }
   // ---- Multi-Step Form ----
   const formData = {};
   let currentStep = 1;
-  const totalSteps = 5;
+  const totalSteps = 7;
+
+  // Populate state dropdown
+  var states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+  var stateSelect = document.getElementById('state');
+  stateSelect.innerHTML = '<option value="">Select...</option>';
+  states.forEach(function(s) {
+    var opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    stateSelect.appendChild(opt);
+  });
 
   function getStepEl(n) { return document.querySelector('.form-step[data-step="' + n + '"]'); }
   function getProgressEl(n) { return document.querySelector('.progress-step[data-step="' + n + '"]'); }
@@ -953,10 +1127,35 @@ section { padding: 96px 0; }
     var nextBtn = step.querySelector('.btn-next');
     if (!nextBtn) return;
 
-    var group = step.querySelector('.option-group');
-    if (group) {
-      var hasSelection = group.querySelectorAll('.option-btn.selected').length > 0;
-      nextBtn.disabled = !hasSelection;
+    // Steps with only option groups (1-4)
+    if (currentStep <= 4) {
+      var group = step.querySelector('.option-group');
+      if (group) {
+        var hasSelection = group.querySelectorAll('.option-btn.selected').length > 0;
+        nextBtn.disabled = !hasSelection;
+      }
+      return;
+    }
+
+    // Step 5: About You — need age, tobacco, height, weight, health-concerns
+    if (currentStep === 5) {
+      var ageOk = document.getElementById('ageRange').value !== '';
+      var tobaccoOk = document.getElementById('tobacco').value !== '';
+      var heightOk = document.getElementById('height').value !== '';
+      var weightOk = document.getElementById('weight').value !== '';
+      var healthOk = step.querySelector('[data-name="health-concerns"] .option-btn.selected') !== null;
+      nextBtn.disabled = !(ageOk && tobaccoOk && heightOk && weightOk && healthOk);
+      return;
+    }
+
+    // Step 6: Location & Employment — need city, state, employment, disability-ss
+    if (currentStep === 6) {
+      var cityOk = document.getElementById('city').value.trim().length > 0;
+      var stateOk = document.getElementById('state').value !== '';
+      var empOk = document.getElementById('employment').value !== '';
+      var disOk = step.querySelector('[data-name="disability-ss"] .option-btn.selected') !== null;
+      nextBtn.disabled = !(cityOk && stateOk && empOk && disOk);
+      return;
     }
   }
 
@@ -995,26 +1194,38 @@ section { padding: 96px 0; }
   var phoneEl = document.getElementById('phone');
   var emailEl = document.getElementById('email');
   var callTimeEl = document.getElementById('callTime');
+  var hobbyEl = document.getElementById('hobby');
   var consentEl = document.getElementById('consent');
   var submitBtn = document.getElementById('submitBtn');
 
-  function validateStep5() {
+  function validateStep7() {
     var valid = true;
     valid = firstNameEl.value.trim().length > 0 && valid;
     valid = lastNameEl.value.trim().length > 0 && valid;
     valid = phoneEl.value.trim().length >= 7 && valid;
     valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim()) && valid;
     valid = callTimeEl.value !== '' && valid;
+    valid = hobbyEl.value.trim().length > 0 && valid;
     valid = consentEl.checked && valid;
     submitBtn.disabled = !valid;
     return valid;
   }
 
-  [firstNameEl, lastNameEl, phoneEl, emailEl, callTimeEl].forEach(function(el) {
-    el.addEventListener('input', validateStep5);
-    el.addEventListener('change', validateStep5);
+  [firstNameEl, lastNameEl, phoneEl, emailEl, callTimeEl, hobbyEl].forEach(function(el) {
+    el.addEventListener('input', validateStep7);
+    el.addEventListener('change', validateStep7);
   });
-  consentEl.addEventListener('change', validateStep5);
+  consentEl.addEventListener('change', validateStep7);
+
+  // Step 5 & 6 field listeners for enabling Next button
+  ['ageRange','tobacco','height','weight'].forEach(function(id) {
+    document.getElementById(id).addEventListener('change', updateNextButton);
+  });
+  ['city','state','employment'].forEach(function(id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', updateNextButton);
+    el.addEventListener('change', updateNextButton);
+  });
 
   // Phone formatting
   phoneEl.addEventListener('input', function() {
@@ -1038,7 +1249,7 @@ section { padding: 96px 0; }
   // --- Submit ---
   submitBtn.addEventListener('click', function() {
     // Clear previous errors
-    [['firstName','firstNameError'], ['lastName','lastNameError'], ['phone','phoneError'], ['email','emailError'], ['callTime','callTimeError']].forEach(function(pair) {
+    [['firstName','firstNameError'], ['lastName','lastNameError'], ['phone','phoneError'], ['email','emailError'], ['callTime','callTimeError'], ['hobby','hobbyError']].forEach(function(pair) {
       clearFieldError(document.getElementById(pair[0]), pair[1]);
     });
     document.getElementById('consentError').classList.remove('visible');
@@ -1049,6 +1260,7 @@ section { padding: 96px 0; }
     if (phoneEl.value.replace(/\D/g, '').length < 7) { showFieldError(phoneEl, 'phoneError'); hasError = true; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showFieldError(emailEl, 'emailError'); hasError = true; }
     if (!callTimeEl.value) { showFieldError(callTimeEl, 'callTimeError'); hasError = true; }
+    if (!hobbyEl.value.trim()) { showFieldError(hobbyEl, 'hobbyError'); hasError = true; }
     if (!consentEl.checked) { document.getElementById('consentError').classList.add('visible'); hasError = true; }
 
     if (hasError) return;
@@ -1058,6 +1270,7 @@ section { padding: 96px 0; }
     formData.phone = phoneEl.value.trim();
     formData.email = emailEl.value.trim();
     formData.callTime = callTimeEl.value;
+    formData.hobby = hobbyEl.value.trim();
 
     // Populate hidden Netlify form
     var nf = document.getElementById('netlifyForm');
@@ -1070,6 +1283,17 @@ section { padding: 96px 0; }
     nf.querySelector('[name="phone"]').value = formData.phone;
     nf.querySelector('[name="email"]').value = formData.email;
     nf.querySelector('[name="call-time"]').value = formData.callTime;
+    // New qualifying fields
+    nf.querySelector('[name="age-range"]').value = document.getElementById('ageRange').value;
+    nf.querySelector('[name="tobacco"]').value = document.getElementById('tobacco').value;
+    nf.querySelector('[name="height"]').value = document.getElementById('height').value;
+    nf.querySelector('[name="weight"]').value = document.getElementById('weight').value;
+    nf.querySelector('[name="health-concerns"]').value = formData['health-concerns'] || '';
+    nf.querySelector('[name="city"]').value = document.getElementById('city').value.trim();
+    nf.querySelector('[name="state"]').value = document.getElementById('state').value;
+    nf.querySelector('[name="employment"]').value = document.getElementById('employment').value;
+    nf.querySelector('[name="disability-ss"]').value = formData['disability-ss'] || '';
+    nf.querySelector('[name="favorite-hobby"]').value = formData.hobby;
 
     // Submit to Netlify via fetch
     var body = new URLSearchParams(new FormData(nf)).toString();
