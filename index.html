@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Clarity — Mortgage Protection Insurance for Homeowners</title>
+<meta name="description" content="Understand your mortgage protection options with clarity and confidence. Education-first guidance for homeowners — no pressure, no jargon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a1a2e;
+  background: #FAF9F6;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, select, textarea { font-family: inherit; font-size: inherit; }
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; font-weight: 700; line-height: 1.25; color: #0F2240; }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); margin-bottom: 1rem; }
+h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); }
+p { max-width: 680px; }
+
+/* ========== LAYOUT ========== */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+@media (max-width: 768px) { section { padding: 64px 0; } }
+
+/* ========== NAV ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 34, 64, 0.97);
+  backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: translateY(-100%);
+}
+.nav.visible { transform: translateY(0); box-shadow: 0 2px 24px rgba(0,0,0,0.15); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1140px; margin: 0 auto; padding: 14px 24px;
+}
+.nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1.15rem; color: #FAF9F6; font-weight: 700; }
+.nav-logo span { color: #C9962A; }
+.nav-cta {
+  background: #C9962A; color: #0F2240; font-weight: 600; font-size: 0.875rem;
+  padding: 10px 24px; border-radius: 6px; transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: #d4a73d; transform: translateY(-1px); }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: linear-gradient(165deg, #0F2240 0%, #162d52 55%, #1a3460 100%);
+  position: relative; overflow: hidden; padding: 120px 0 96px;
+}
+.hero-geo {
+  position: absolute; inset: 0; overflow: hidden; opacity: 0.07;
+}
+.hero-geo::before {
+  content: ''; position: absolute; top: -20%; right: -10%; width: 700px; height: 700px;
+  border: 2px solid #C9962A; border-radius: 50%; transform: rotate(15deg);
+}
+.hero-geo::after {
+  content: ''; position: absolute; bottom: -15%; left: -5%; width: 500px; height: 500px;
+  border: 2px solid #C9962A; transform: rotate(45deg);
+}
+.hero .container { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-block; background: rgba(201,150,42,0.15); color: #C9962A;
+  font-size: 0.8rem; font-weight: 600; padding: 6px 16px; border-radius: 100px;
+  margin-bottom: 28px; letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid rgba(201,150,42,0.25);
+}
+.hero h1 { color: #FAF9F6; max-width: 720px; margin-bottom: 20px; }
+.hero h1 em { font-style: normal; color: #C9962A; }
+.hero-sub {
+  color: rgba(250,249,246,0.75); font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 560px; margin-bottom: 40px; line-height: 1.7;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #C9962A; color: #0F2240; font-weight: 700; font-size: 1.05rem;
+  padding: 16px 36px; border-radius: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(201,150,42,0.3);
+}
+.btn-primary:hover { background: #d4a73d; transform: translateY(-2px); box-shadow: 0 6px 28px rgba(201,150,42,0.4); }
+.btn-primary svg { transition: transform 0.2s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+.hero-trust {
+  margin-top: 32px; color: rgba(250,249,246,0.45); font-size: 0.85rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-trust svg { flex-shrink: 0; }
+
+/* ========== EDUCATION ========== */
+.education { background: #FAF9F6; }
+.education-header { text-align: center; margin-bottom: 56px; }
+.education-header p { margin: 0 auto; color: #555; }
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 768px) { .edu-grid { grid-template-columns: 1fr; gap: 32px; } }
+.edu-content p { color: #444; margin-bottom: 16px; }
+.checklist { list-style: none; margin: 24px 0; }
+.checklist li {
+  position: relative; padding: 10px 0 10px 36px; color: #333;
+  border-bottom: 1px solid rgba(15,34,64,0.06);
+}
+.checklist li::before {
+  content: ''; position: absolute; left: 0; top: 14px; width: 20px; height: 20px;
+  border: 2px solid #C9962A; border-radius: 4px;
+}
+.checklist li::after {
+  content: ''; position: absolute; left: 5px; top: 18px; width: 10px; height: 6px;
+  border-left: 2.5px solid #C9962A; border-bottom: 2.5px solid #C9962A;
+  transform: rotate(-45deg);
+}
+.not-for-box {
+  background: #fff; border: 1px solid rgba(15,34,64,0.08); border-radius: 12px;
+  padding: 32px; box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
+.not-for-box h3 { color: #0F2240; margin-bottom: 16px; font-size: 1.15rem; }
+.not-for-list { list-style: none; }
+.not-for-list li {
+  padding: 10px 0 10px 32px; position: relative; color: #555;
+  border-bottom: 1px solid rgba(15,34,64,0.05);
+}
+.not-for-list li:last-child { border-bottom: none; }
+.not-for-list li::before {
+  content: '×'; position: absolute; left: 4px; top: 8px;
+  font-size: 1.3rem; font-weight: 700; color: #b85c5c; line-height: 1;
+}
+.not-for-note {
+  margin-top: 20px; padding: 16px; background: rgba(201,150,42,0.06);
+  border-radius: 8px; font-size: 0.9rem; color: #666; line-height: 1.6;
+}
+
+/* ========== HOW IT WORKS ========== */
+.how-it-works { background: #0F2240; color: #FAF9F6; position: relative; overflow: hidden; }
+.how-it-works::before {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(201,150,42,0.06) 0%, transparent 60%);
+}
+.how-it-works .container { position: relative; z-index: 2; }
+.how-header { text-align: center; margin-bottom: 64px; }
+.how-header h2 { color: #FAF9F6; }
+.how-header p { margin: 0 auto; color: rgba(250,249,246,0.65); }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+@media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; gap: 32px; } }
+.step-card {
+  background: rgba(250,249,246,0.04); border: 1px solid rgba(250,249,246,0.08);
+  border-radius: 16px; padding: 40px 32px; text-align: center;
+  transition: background 0.3s, border-color 0.3s;
+}
+.step-card:hover { background: rgba(250,249,246,0.07); border-color: rgba(201,150,42,0.25); }
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 50%; background: rgba(201,150,42,0.12);
+  color: #C9962A; font-family: 'Libre Baskerville', serif; font-size: 1.2rem;
+  font-weight: 700; margin-bottom: 20px;
+}
+.step-card h3 { color: #FAF9F6; margin-bottom: 12px; }
+.step-card p { color: rgba(250,249,246,0.65); margin: 0 auto; font-size: 0.95rem; }
+
+/* ========== TRUST ========== */
+.trust { background: #FAF9F6; }
+.trust-header { text-align: center; margin-bottom: 56px; }
+.trust-header p { margin: 0 auto; color: #555; }
+.testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 56px; }
+@media (max-width: 768px) { .testimonials { grid-template-columns: 1fr; } }
+.testimonial {
+  background: #fff; border-radius: 14px; padding: 32px;
+  border: 1px solid rgba(15,34,64,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.03);
+}
+.testimonial-stars { color: #C9962A; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
+.testimonial p { color: #444; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 42px; height: 42px; border-radius: 50%; background: #0F2240;
+  display: flex; align-items: center; justify-content: center;
+  color: #C9962A; font-weight: 700; font-size: 0.85rem;
+}
+.testimonial-name { font-weight: 600; font-size: 0.9rem; color: #0F2240; }
+.testimonial-detail { font-size: 0.8rem; color: #888; }
+.trust-badges {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  padding: 40px 0; border-top: 1px solid rgba(15,34,64,0.06);
+  border-bottom: 1px solid rgba(15,34,64,0.06);
+}
+.badge { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.badge-icon {
+  width: 52px; height: 52px; border-radius: 50%; background: rgba(15,34,64,0.04);
+  display: flex; align-items: center; justify-content: center;
+}
+.badge-icon svg { width: 24px; height: 24px; color: #0F2240; }
+.badge-label { font-size: 0.85rem; font-weight: 600; color: #0F2240; text-align: center; }
+.about-blurb {
+  max-width: 720px; margin: 48px auto 0; text-align: center;
+}
+.about-blurb h3 { margin-bottom: 12px; }
+.about-blurb p { color: #555; margin: 0 auto; font-size: 0.95rem; }
+
+/* ========== FORM SECTION ========== */
+.form-section {
+  background: linear-gradient(170deg, #0F2240 0%, #162d52 100%);
+  position: relative; overflow: hidden;
+}
+.form-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 80%, rgba(201,150,42,0.05) 0%, transparent 60%);
+}
+.form-section .container { position: relative; z-index: 2; }
+.form-header { text-align: center; margin-bottom: 48px; }
+.form-header h2 { color: #FAF9F6; }
+.form-header p { margin: 0 auto; color: rgba(250,249,246,0.65); }
+.form-wrapper {
+  max-width: 600px; margin: 0 auto; background: #fff;
+  border-radius: 20px; padding: 48px 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) { .form-wrapper { padding: 32px 20px; border-radius: 16px; } }
+.progress-bar { display: flex; gap: 8px; margin-bottom: 36px; }
+.progress-step {
+  flex: 1; height: 4px; border-radius: 4px; background: #e8e6e1;
+  transition: background 0.4s ease;
+}
+.progress-step.active { background: #C9962A; }
+.progress-step.completed { background: #0F2240; }
+.form-step { display: none; animation: fadeIn 0.35s ease; }
+.form-step.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.form-step h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.form-step .step-sub { color: #777; font-size: 0.9rem; margin-bottom: 28px; }
+.option-group { display: flex; flex-direction: column; gap: 12px; }
+.option-btn {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px; border: 2px solid #e8e6e1; border-radius: 10px;
+  background: #fff; font-size: 0.95rem; color: #333;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  text-align: left; width: 100%;
+}
+.option-btn:hover { border-color: #C9962A; background: rgba(201,150,42,0.03); }
+.option-btn.selected { border-color: #C9962A; background: rgba(201,150,42,0.06); box-shadow: 0 0 0 1px #C9962A; }
+.option-radio {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc;
+  flex-shrink: 0; position: relative; transition: border-color 0.2s;
+}
+.option-btn.selected .option-radio { border-color: #C9962A; }
+.option-btn.selected .option-radio::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 10px; height: 10px; border-radius: 50%; background: #C9962A;
+}
+.option-check {
+  width: 20px; height: 20px; border-radius: 5px; border: 2px solid #ccc;
+  flex-shrink: 0; position: relative; transition: border-color 0.2s, background 0.2s;
+}
+.option-btn.selected .option-check {
+  border-color: #C9962A; background: #C9962A;
+}
+.option-btn.selected .option-check::after {
+  content: ''; position: absolute; top: 2px; left: 5px;
+  width: 6px; height: 10px; border: solid #fff; border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.form-nav { display: flex; justify-content: space-between; margin-top: 32px; gap: 12px; }
+.btn-next {
+  background: #C9962A; color: #0F2240; font-weight: 700; font-size: 0.95rem;
+  padding: 14px 32px; border-radius: 8px; margin-left: auto;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-next:hover { background: #d4a73d; transform: translateY(-1px); }
+.btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-back {
+  color: #888; font-weight: 500; font-size: 0.9rem; padding: 14px 20px;
+  transition: color 0.2s;
+}
+.btn-back:hover { color: #333; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-weight: 600; font-size: 0.85rem; color: #0F2240; margin-bottom: 6px; }
+.input-group input, .input-group select {
+  width: 100%; padding: 13px 16px; border: 2px solid #e8e6e1; border-radius: 8px;
+  font-size: 0.95rem; color: #333; transition: border-color 0.2s;
+  background: #fff;
+}
+.input-group input:focus, .input-group select:focus { outline: none; border-color: #C9962A; }
+.input-group input.error, .input-group select.error { border-color: #c55; }
+.input-group .error-msg { color: #c55; font-size: 0.8rem; margin-top: 4px; display: none; }
+.input-group .error-msg.visible { display: block; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 500px) { .input-row { grid-template-columns: 1fr; } }
+.consent-group { margin: 24px 0 8px; }
+.consent-label {
+  display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+  font-size: 0.85rem; color: #666; line-height: 1.5;
+}
+.consent-label input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px; accent-color: #C9962A; flex-shrink: 0;
+}
+.btn-submit {
+  width: 100%; background: #C9962A; color: #0F2240; font-weight: 700;
+  font-size: 1.05rem; padding: 16px; border-radius: 8px;
+  transition: background 0.2s, transform 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-submit:hover { background: #d4a73d; transform: translateY(-1px); }
+.btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* Exit / Confirmation Screens */
+.form-exit, .form-confirm { display: none; text-align: center; padding: 20px 0; }
+.form-exit.active, .form-confirm.active { display: block; animation: fadeIn 0.35s ease; }
+.form-exit svg, .form-confirm svg { margin: 0 auto 20px; }
+.form-exit h3, .form-confirm h3 { margin-bottom: 12px; }
+.form-exit p, .form-confirm p { color: #666; margin: 0 auto; font-size: 0.95rem; }
+.form-confirm .confirm-name { color: #C9962A; }
+
+/* ========== FAQ ========== */
+.faq { background: #FAF9F6; }
+.faq-header { text-align: center; margin-bottom: 48px; }
+.faq-header p { margin: 0 auto; color: #555; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(15,34,64,0.08); }
+.faq-question {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 0; font-size: 1rem; font-weight: 600; color: #0F2240;
+  text-align: left; gap: 16px; transition: color 0.2s;
+}
+.faq-question:hover { color: #C9962A; }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%; background: rgba(15,34,64,0.04);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background 0.2s, transform 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(201,150,42,0.1); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
+.faq-answer p { color: #555; font-size: 0.95rem; line-height: 1.7; }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #0F2240; color: rgba(250,249,246,0.5); padding: 48px 0;
+  font-size: 0.85rem;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; color: #FAF9F6; font-weight: 700; }
+.footer-logo span { color: #C9962A; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { transition: color 0.2s; }
+.footer-links a:hover { color: #FAF9F6; }
+.footer-tag { font-style: italic; color: rgba(250,249,246,0.35); }
+
+/* ========== UTILS ========== */
+.section-label {
+  display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: #C9962A; margin-bottom: 12px;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="stickyNav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-logo">Mortgage<span>Clarity</span></div>
+    <a href="#qualify" class="nav-cta">See If I Qualify</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-geo" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-badge">Mortgage Protection for Homeowners</div>
+    <h1>Your mortgage is likely your biggest financial&nbsp;commitment. <em>Let's make sure it's&nbsp;protected.</em></h1>
+    <p class="hero-sub">We help you understand if mortgage protection insurance is right for your family — no pressure, no jargon, just clarity.</p>
+    <a href="#qualify" class="btn-primary">
+      See If I Qualify
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <div class="hero-trust">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Only for homeowners with an active mortgage
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EDUCATION ==================== -->
+<section class="education" id="learn">
+  <div class="container">
+    <div class="education-header">
+      <span class="section-label">Understand Your Options</span>
+      <h2>What Is Mortgage Protection Insurance?</h2>
+      <p>A straightforward explanation — so you can decide what's right for your family.</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-content">
+        <p>Mortgage protection insurance is a policy designed to pay off some or all of your remaining mortgage balance if you pass away, become critically ill, or are unable to work due to disability. It ensures your family can stay in their home during the most difficult moments of their lives.</p>
+        <p>Unlike private mortgage insurance (PMI), which protects the lender, mortgage protection insurance protects <strong>you and your family</strong>. The benefit goes directly to your loved ones or your mortgage servicer — keeping your home secure regardless of what happens.</p>
+        <h3 style="margin-top: 32px; margin-bottom: 8px;">Is this right for me?</h3>
+        <p style="color: #777; font-size: 0.9rem; margin-bottom: 4px;">This coverage may be a good fit if you can say yes to most of these:</p>
+        <ul class="checklist">
+          <li>You currently have a mortgage on your home</li>
+          <li>Your spouse, children, or dependents rely on your income</li>
+          <li>Your family would struggle with mortgage payments if you couldn't work</li>
+          <li>You want a safety net beyond a standard life insurance policy</li>
+          <li>You'd feel more secure knowing your home is protected</li>
+        </ul>
+      </div>
+      <div>
+        <div class="not-for-box">
+          <h3>Who This Is Not For</h3>
+          <p style="color: #777; font-size: 0.9rem; margin-bottom: 16px;">We believe in honesty. Mortgage protection isn't the right move for everyone, and that's okay.</p>
+          <ul class="not-for-list">
+            <li>You rent your home and don't have a mortgage</li>
+            <li>You have no dependents and no one relies on your income</li>
+            <li>You already have comprehensive life and disability coverage that fully accounts for your mortgage</li>
+            <li>You're looking for the absolute cheapest option without understanding fit</li>
+          </ul>
+          <div class="not-for-note">
+            <strong>Why are we telling you this?</strong> Because our goal is to help the right people find the right coverage — not to sell a policy to everyone. If this doesn't describe you, that's a good thing. You may already be covered.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="how-it-works" id="how">
+  <div class="container">
+    <div class="how-header">
+      <span class="section-label">Simple Process</span>
+      <h2>How Mortgage Clarity Works</h2>
+      <p>Three steps from question to clarity. No obligation at any point.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Answer a Few Quick Questions</h3>
+        <p>Our short questionnaire helps us understand your mortgage, your family situation, and what matters most to you. Takes about two minutes.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>We Match You With Options</h3>
+        <p>As an independent broker, we compare coverage from multiple carriers to find the options that actually fit your situation — not just what one company offers.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Get a Clear Recommendation</h3>
+        <p>A Mortgage Clarity advisor walks you through your options in plain English. You decide what makes sense. There is no obligation to move forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRUST / SOCIAL PROOF ==================== -->
+<section class="trust" id="trust">
+  <div class="container">
+    <div class="trust-header">
+      <span class="section-label">Real Homeowners</span>
+      <h2>Why Homeowners Trust Mortgage Clarity</h2>
+      <p>We let our approach speak for itself.</p>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"I'd been getting those mailers about mortgage protection for years and always tossed them. Mortgage Clarity was the first company that actually explained what it was without pressuring me. Turns out it made a lot of sense for our situation."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RJ</div>
+          <div>
+            <div class="testimonial-name">Rachel J.</div>
+            <div class="testimonial-detail">Homeowner, Austin TX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"My advisor spent 20 minutes going over options and genuinely told me one of them wasn't worth it for my case. That kind of honesty is why I ended up going with the coverage they did recommend. No regrets."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MT</div>
+          <div>
+            <div class="testimonial-name">Marcus T.</div>
+            <div class="testimonial-detail">Homeowner, Charlotte NC</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"After my husband's health scare, I realized we had a gap in our coverage. The Mortgage Clarity team helped us understand exactly what we needed — nothing more, nothing less. The whole process felt respectful."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DW</div>
+          <div>
+            <div class="testimonial-name">Dana W.</div>
+            <div class="testimonial-detail">Homeowner, Columbus OH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-badges">
+      <div class="badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="badge-label">Independent Broker</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="badge-label">No Obligation</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="badge-label">Your Info Is Never Sold</div>
+      </div>
+    </div>
+    <div class="about-blurb">
+      <h3>About Mortgage Clarity</h3>
+      <p>Mortgage Clarity is an independent insurance advisory built on one idea: homeowners deserve to understand their protection options before making a decision. We work with multiple carriers, we don't push products, and we measure success by whether our clients feel informed — not by how many policies we write. Every conversation starts with education, because a confident decision is always better than an impulsive one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== QUALIFICATION FORM ==================== -->
+<section class="form-section" id="qualify">
+  <div class="container">
+    <div class="form-header">
+      <span class="section-label">Get Started</span>
+      <h2>See If Mortgage Protection Is Right for You</h2>
+      <p>Answer a few quick questions. If it's a good fit, we'll match you with the right options.</p>
+    </div>
+    <div class="form-wrapper">
+      <!-- Progress Bar -->
+      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+        <div class="progress-step active" data-step="1"></div>
+        <div class="progress-step" data-step="2"></div>
+        <div class="progress-step" data-step="3"></div>
+        <div class="progress-step" data-step="4"></div>
+        <div class="progress-step" data-step="5"></div>
+      </div>
+
+      <!-- STEP 1: Homeowner qualifier -->
+      <div class="form-step active" data-step="1">
+        <h3>Let's start with the basics</h3>
+        <p class="step-sub">This helps us make sure mortgage protection is relevant to you.</p>
+        <div class="option-group" data-name="homeowner" data-type="radio">
+          <button type="button" class="option-btn" data-value="yes">
+            <span class="option-radio"></span>
+            Yes, I have a mortgage on my primary home
+          </button>
+          <button type="button" class="option-btn" data-value="no">
+            <span class="option-radio"></span>
+            No, I don't currently have a mortgage
+          </button>
+        </div>
+        <div class="form-nav">
+          <div></div>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Dependents -->
+      <div class="form-step" data-step="2">
+        <h3>Who depends on your income?</h3>
+        <p class="step-sub">Select all that apply. This helps us understand who you're protecting.</p>
+        <div class="option-group" data-name="dependents" data-type="checkbox">
+          <button type="button" class="option-btn" data-value="spouse">
+            <span class="option-check"></span>
+            Spouse or partner
+          </button>
+          <button type="button" class="option-btn" data-value="children">
+            <span class="option-check"></span>
+            Children
+          </button>
+          <button type="button" class="option-btn" data-value="none">
+            <span class="option-check"></span>
+            No one right now
+          </button>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back">← Back</button>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Concern -->
+      <div class="form-step" data-step="3">
+        <h3>What's your biggest concern?</h3>
+        <p class="step-sub">There are no wrong answers — this helps us tailor the conversation.</p>
+        <div class="option-group" data-name="concern" data-type="radio">
+          <button type="button" class="option-btn" data-value="family-loss">
+            <span class="option-radio"></span>
+            My family losing the house if I pass away
+          </button>
+          <button type="button" class="option-btn" data-value="disability">
+            <span class="option-radio"></span>
+            My mortgage if I become disabled or seriously ill
+          </button>
+          <button type="button" class="option-btn" data-value="explore">
+            <span class="option-radio"></span>
+            I just want to understand my options better
+          </button>
+          <button type="button" class="option-btn" data-value="second-opinion">
+            <span class="option-radio"></span>
+            I already have life insurance but want a second opinion
+          </button>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back">← Back</button>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Mortgage amount -->
+      <div class="form-step" data-step="4">
+        <h3>Approximately how much is left on your mortgage?</h3>
+        <p class="step-sub">A rough estimate is fine. This helps us identify relevant coverage amounts.</p>
+        <div class="option-group" data-name="mortgage-amount" data-type="radio">
+          <button type="button" class="option-btn" data-value="under-100k">
+            <span class="option-radio"></span>
+            Under $100,000
+          </button>
+          <button type="button" class="option-btn" data-value="100k-300k">
+            <span class="option-radio"></span>
+            $100,000 – $300,000
+          </button>
+          <button type="button" class="option-btn" data-value="300k-500k">
+            <span class="option-radio"></span>
+            $300,000 – $500,000
+          </button>
+          <button type="button" class="option-btn" data-value="500k-plus">
+            <span class="option-radio"></span>
+            $500,000+
+          </button>
+          <button type="button" class="option-btn" data-value="prefer-not">
+            <span class="option-radio"></span>
+            I'd rather not say
+          </button>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back">← Back</button>
+          <button type="button" class="btn-next" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Contact info -->
+      <div class="form-step" data-step="5">
+        <h3>Last step — how can we reach you?</h3>
+        <p class="step-sub">A Mortgage Clarity advisor will reach out within one business day.</p>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="e.g. Sarah" autocomplete="given-name" required>
+            <div class="error-msg" id="firstNameError">Please enter your first name</div>
+          </div>
+          <div class="input-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="e.g. Mitchell" autocomplete="family-name" required>
+            <div class="error-msg" id="lastNameError">Please enter your last name</div>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" autocomplete="tel" required>
+          <div class="error-msg" id="phoneError">Please enter a valid phone number</div>
+        </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="sarah@example.com" autocomplete="email" required>
+          <div class="error-msg" id="emailError">Please enter a valid email address</div>
+        </div>
+        <div class="input-group">
+          <label for="callTime">Best Time to Call</label>
+          <select id="callTime">
+            <option value="">Select a time...</option>
+            <option value="morning">Morning (9am – 12pm)</option>
+            <option value="afternoon">Afternoon (12pm – 5pm)</option>
+            <option value="evening">Evening (5pm – 8pm)</option>
+            <option value="anytime">Anytime works</option>
+          </select>
+          <div class="error-msg" id="callTimeError">Please select a preferred time</div>
+        </div>
+        <div class="consent-group">
+          <label class="consent-label">
+            <input type="checkbox" id="consent">
+            I agree to be contacted by a Mortgage Clarity advisor to discuss my options. No spam, ever.
+          </label>
+          <div class="error-msg" id="consentError" style="margin-left: 30px;">You must agree before submitting</div>
+        </div>
+        <div class="form-nav" style="flex-direction: column; gap: 8px;">
+          <button type="button" class="btn-submit" disabled id="submitBtn">
+            Send My Information
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button type="button" class="btn-back" style="text-align: center;">← Back</button>
+        </div>
+      </div>
+
+      <!-- EXIT: Not a homeowner -->
+      <div class="form-exit" id="exitHomeowner">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9962A" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <h3>Mortgage Protection Is for Homeowners</h3>
+        <p>Mortgage protection insurance is specifically designed for homeowners with an active mortgage. If your situation changes down the road, we'll be here to help you explore your options.</p>
+        <p style="margin-top: 16px; font-size: 0.85rem; color: #999;">We appreciate your time and honesty.</p>
+      </div>
+
+      <!-- EXIT: No dependents -->
+      <div class="form-exit" id="exitDependents">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9962A" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <h3>You Might Not Need This Right Now</h3>
+        <p>Mortgage protection is most valuable when others depend on your income to keep up with mortgage payments. Since no one currently relies on your income, this coverage may not be the right fit today.</p>
+        <p style="margin-top: 16px; font-size: 0.85rem; color: #999;">If that changes — a partner, a family — come back anytime. We're here to help when it makes sense.</p>
+      </div>
+
+      <!-- CONFIRMATION -->
+      <div class="form-confirm" id="confirmation">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#2a8c5a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke-width="2"/></svg>
+        <h3>You're all set, <span class="confirm-name" id="confirmName"></span>.</h3>
+        <p>A Mortgage Clarity advisor will reach out within one business day to walk you through your options — no pressure, no obligation.</p>
+        <p style="margin-top: 16px; font-size: 0.9rem; color: #888;">Check your email for a short overview of what to expect during the call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Clear answers to the questions homeowners ask most.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is this the same as PMI (Private Mortgage Insurance)?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>No — they're completely different. PMI (Private Mortgage Insurance) protects your <em>lender</em> if you default on your loan, and it's typically required when your down payment is less than 20%. Mortgage protection insurance protects <em>you and your family</em> by paying off your mortgage if you pass away, become disabled, or are diagnosed with a critical illness. One protects the bank. The other protects your home and your loved ones.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is this the same thing as life insurance?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>There's overlap, but they serve different purposes. Life insurance provides a general death benefit your beneficiaries can use however they choose. Mortgage protection insurance is specifically designed to cover your remaining mortgage balance, ensuring your family can keep their home. Some homeowners use both; others find that mortgage protection fills a specific gap their life insurance doesn't cover. Your advisor will help you understand what makes sense for your situation.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Will I be pressured to buy a policy?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely not. A Mortgage Clarity advisor will walk you through your options, answer your questions, and give you a clear recommendation. That's it. There is no follow-up pressure, no hard close, no "limited time offer." We believe an informed homeowner makes the best decision — and that decision might be to do nothing right now. That's completely fine.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How much does mortgage protection cost?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>It depends on several factors: your age, health, remaining mortgage balance, and the type of coverage you choose. That's exactly what the consultation helps determine. Rather than quoting a generic number that may not apply to you, your advisor will provide options tailored to your specific situation so you can make an informed comparison.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What happens to my information?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Your information is used exclusively to match you with the right coverage options and connect you with a Mortgage Clarity advisor. It is never sold to third parties, shared with telemarketers, or used for any purpose beyond your consultation. We take your privacy seriously because trust is the foundation of everything we do.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How is Mortgage Clarity different from going directly to an insurer?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>When you go directly to an insurance company, they can only show you their own products. As an independent broker, Mortgage Clarity works with multiple carriers. This means your advisor can compare options across the market and recommend the coverage that genuinely fits your needs and budget — not just whatever one company happens to sell. Independent guidance means unbiased recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<!-- Hidden Netlify Form (for bot detection & submission) -->
+<form name="mortgage-clarity-leads" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none;" id="netlifyForm">
+  <input type="hidden" name="form-name" value="mortgage-clarity-leads">
+  <input type="hidden" name="bot-field">
+  <input type="hidden" name="homeowner">
+  <input type="hidden" name="dependents">
+  <input type="hidden" name="concern">
+  <input type="hidden" name="mortgage-amount">
+  <input type="hidden" name="first-name">
+  <input type="hidden" name="last-name">
+  <input type="hidden" name="phone">
+  <input type="hidden" name="email">
+  <input type="hidden" name="call-time">
+</form>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Mortgage<span>Clarity</span></div>
+        <p class="footer-tag" style="margin-top: 4px;">Education-first mortgage protection guidance.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms</a>
+      </div>
+    </div>
+    <div style="margin-top: 24px; text-align: center; color: rgba(250,249,246,0.25); font-size: 0.8rem;">
+      &copy; 2026 Mortgage Clarity. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ========================================================
+   MORTGAGE CLARITY — Form Logic & UI
+   ======================================================== */
+(function() {
+  'use strict';
+
+  // ---- Sticky Nav ----
+  const nav = document.getElementById('stickyNav');
+  const hero = document.getElementById('hero');
+  let navVisible = false;
+
+  function checkNav() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    if (heroBottom < 0 && !navVisible) {
+      nav.classList.add('visible');
+      navVisible = true;
+    } else if (heroBottom >= 0 && navVisible) {
+      nav.classList.remove('visible');
+      navVisible = false;
+    }
+  }
+  window.addEventListener('scroll', checkNav, { passive: true });
+
+  // ---- FAQ Accordion ----
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ---- Multi-Step Form ----
+  const formData = {};
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  function getStepEl(n) { return document.querySelector('.form-step[data-step="' + n + '"]'); }
+  function getProgressEl(n) { return document.querySelector('.progress-step[data-step="' + n + '"]'); }
+
+  function showStep(n) {
+    document.querySelectorAll('.form-step').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelectorAll('.form-exit, .form-confirm').forEach(function(el) { el.classList.remove('active'); });
+    var step = getStepEl(n);
+    if (step) step.classList.add('active');
+
+    // Update progress
+    for (var i = 1; i <= totalSteps; i++) {
+      var p = getProgressEl(i);
+      p.classList.remove('active', 'completed');
+      if (i < n) p.classList.add('completed');
+      else if (i === n) p.classList.add('active');
+    }
+    currentStep = n;
+  }
+
+  function showExit(id) {
+    document.querySelectorAll('.form-step').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelector('.progress-bar').style.display = 'none';
+    document.getElementById(id).classList.add('active');
+  }
+
+  function showConfirmation() {
+    document.querySelectorAll('.form-step').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelector('.progress-bar').style.display = 'none';
+    document.getElementById('confirmName').textContent = formData.firstName || '';
+    document.getElementById('confirmation').classList.add('active');
+  }
+
+  // --- Option button handling ---
+  document.querySelectorAll('.option-group').forEach(function(group) {
+    var type = group.dataset.type; // radio or checkbox
+    var name = group.dataset.name;
+
+    group.querySelectorAll('.option-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (type === 'radio') {
+          group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          formData[name] = btn.dataset.value;
+        } else {
+          // checkbox logic with "none" exclusivity
+          if (btn.dataset.value === 'none') {
+            group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+            btn.classList.add('selected');
+          } else {
+            group.querySelector('.option-btn[data-value="none"]')?.classList.remove('selected');
+            btn.classList.toggle('selected');
+          }
+          formData[name] = Array.from(group.querySelectorAll('.option-btn.selected')).map(function(b) { return b.dataset.value; });
+        }
+        updateNextButton();
+      });
+    });
+  });
+
+  function updateNextButton() {
+    var step = getStepEl(currentStep);
+    if (!step) return;
+    var nextBtn = step.querySelector('.btn-next');
+    if (!nextBtn) return;
+
+    var group = step.querySelector('.option-group');
+    if (group) {
+      var hasSelection = group.querySelectorAll('.option-btn.selected').length > 0;
+      nextBtn.disabled = !hasSelection;
+    }
+  }
+
+  // --- Next / Back buttons ---
+  document.querySelectorAll('.btn-next').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Step-specific logic
+      if (currentStep === 1 && formData.homeowner === 'no') {
+        showExit('exitHomeowner');
+        return;
+      }
+      if (currentStep === 2) {
+        var deps = formData.dependents || [];
+        if (deps.length === 1 && deps[0] === 'none') {
+          showExit('exitDependents');
+          return;
+        }
+      }
+      if (currentStep < totalSteps) {
+        showStep(currentStep + 1);
+      }
+    });
+  });
+
+  document.querySelectorAll('.btn-back').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (currentStep > 1) {
+        showStep(currentStep - 1);
+      }
+    });
+  });
+
+  // --- Step 5: Contact form validation ---
+  var firstNameEl = document.getElementById('firstName');
+  var lastNameEl = document.getElementById('lastName');
+  var phoneEl = document.getElementById('phone');
+  var emailEl = document.getElementById('email');
+  var callTimeEl = document.getElementById('callTime');
+  var consentEl = document.getElementById('consent');
+  var submitBtn = document.getElementById('submitBtn');
+
+  function validateStep5() {
+    var valid = true;
+    valid = firstNameEl.value.trim().length > 0 && valid;
+    valid = lastNameEl.value.trim().length > 0 && valid;
+    valid = phoneEl.value.trim().length >= 7 && valid;
+    valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim()) && valid;
+    valid = callTimeEl.value !== '' && valid;
+    valid = consentEl.checked && valid;
+    submitBtn.disabled = !valid;
+    return valid;
+  }
+
+  [firstNameEl, lastNameEl, phoneEl, emailEl, callTimeEl].forEach(function(el) {
+    el.addEventListener('input', validateStep5);
+    el.addEventListener('change', validateStep5);
+  });
+  consentEl.addEventListener('change', validateStep5);
+
+  // Phone formatting
+  phoneEl.addEventListener('input', function() {
+    var digits = phoneEl.value.replace(/\D/g, '').substring(0, 10);
+    if (digits.length >= 7) {
+      phoneEl.value = '(' + digits.substring(0,3) + ') ' + digits.substring(3,6) + '-' + digits.substring(6);
+    } else if (digits.length >= 4) {
+      phoneEl.value = '(' + digits.substring(0,3) + ') ' + digits.substring(3);
+    }
+  });
+
+  function showFieldError(inputEl, errorId) {
+    inputEl.classList.add('error');
+    document.getElementById(errorId).classList.add('visible');
+  }
+  function clearFieldError(inputEl, errorId) {
+    inputEl.classList.remove('error');
+    document.getElementById(errorId).classList.remove('visible');
+  }
+
+  // --- Submit ---
+  submitBtn.addEventListener('click', function() {
+    // Clear previous errors
+    [['firstName','firstNameError'], ['lastName','lastNameError'], ['phone','phoneError'], ['email','emailError'], ['callTime','callTimeError']].forEach(function(pair) {
+      clearFieldError(document.getElementById(pair[0]), pair[1]);
+    });
+    document.getElementById('consentError').classList.remove('visible');
+
+    var hasError = false;
+    if (!firstNameEl.value.trim()) { showFieldError(firstNameEl, 'firstNameError'); hasError = true; }
+    if (!lastNameEl.value.trim()) { showFieldError(lastNameEl, 'lastNameError'); hasError = true; }
+    if (phoneEl.value.replace(/\D/g, '').length < 7) { showFieldError(phoneEl, 'phoneError'); hasError = true; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showFieldError(emailEl, 'emailError'); hasError = true; }
+    if (!callTimeEl.value) { showFieldError(callTimeEl, 'callTimeError'); hasError = true; }
+    if (!consentEl.checked) { document.getElementById('consentError').classList.add('visible'); hasError = true; }
+
+    if (hasError) return;
+
+    formData.firstName = firstNameEl.value.trim();
+    formData.lastName = lastNameEl.value.trim();
+    formData.phone = phoneEl.value.trim();
+    formData.email = emailEl.value.trim();
+    formData.callTime = callTimeEl.value;
+
+    // Populate hidden Netlify form
+    var nf = document.getElementById('netlifyForm');
+    nf.querySelector('[name="homeowner"]').value = formData.homeowner || '';
+    nf.querySelector('[name="dependents"]').value = (Array.isArray(formData.dependents) ? formData.dependents.join(', ') : formData.dependents) || '';
+    nf.querySelector('[name="concern"]').value = formData.concern || '';
+    nf.querySelector('[name="mortgage-amount"]').value = formData['mortgage-amount'] || '';
+    nf.querySelector('[name="first-name"]').value = formData.firstName;
+    nf.querySelector('[name="last-name"]').value = formData.lastName;
+    nf.querySelector('[name="phone"]').value = formData.phone;
+    nf.querySelector('[name="email"]').value = formData.email;
+    nf.querySelector('[name="call-time"]').value = formData.callTime;
+
+    // Submit to Netlify via fetch
+    var body = new URLSearchParams(new FormData(nf)).toString();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending\u2026';
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    }).then(function(res) {
+      if (res.ok) {
+        showConfirmation();
+      } else {
+        alert('Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send My Information <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+      }
+    }).catch(function() {
+      alert('Network error. Please check your connection and try again.');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send My Information <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+    });
+  });
+
+  // ---- Smooth scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
