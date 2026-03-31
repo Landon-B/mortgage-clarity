@@ -1,8 +1,6 @@
 // Netlify Function: Verify SMS code via Twilio Verify API
 // Required env vars: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SERVICE_SID
 
-const TWILIO_VERIFY_SERVICE_SID = process.env.TWILIO_VERIFY_SERVICE_SID;
-
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
@@ -20,8 +18,9 @@ exports.handler = async function(event) {
 
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const verifySid = process.env.TWILIO_VERIFY_SERVICE_SID;
 
-    if (!accountSid || !authToken || !TWILIO_VERIFY_SERVICE_SID) {
+    if (!accountSid || !authToken || !verifySid) {
       return { statusCode: 500, body: JSON.stringify({ error: 'SMS service not configured' }) };
     }
 
@@ -32,7 +31,7 @@ exports.handler = async function(event) {
     params.append('Code', code);
 
     const response = await fetch(
-      `https://verify.twilio.com/v2/Services/${TWILIO_VERIFY_SERVICE_SID}/VerificationCheck`,
+      `https://verify.twilio.com/v2/Services/${verifySid}/VerificationCheck`,
       {
         method: 'POST',
         headers: {
