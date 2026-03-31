@@ -1,11 +1,5 @@
-// Netlify Function: Send SMS verification code via Twilio
-// Required env vars: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER
-
-const crypto = require('crypto');
-
-// In-memory store (works per-function-instance; for production use a KV store)
-// Netlify Functions are stateless, so we use Twilio Verify API instead
-const TWILIO_VERIFY_SERVICE_SID = process.env.TWILIO_VERIFY_SERVICE_SID;
+// Netlify Function: Send SMS verification code via Twilio Verify API
+// Required env vars: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SERVICE_SID
 
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
@@ -24,9 +18,17 @@ exports.handler = async function(event) {
 
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const verifySid = process.env.TWILIO_VERIFY_SERVICE_SID;
 
-    if (!accountSid || !authToken || !TWILIO_VERIFY_SERVICE_SID) {
-      return { statusCode: 500, body: JSON.stringify({ error: 'SMS service not configured' }) };
+    // Debug: log which vars are missing (values are not logged)
+    const missing = [];
+    if (!accountSid) missing.push('TWILIO_ACCOUNT_SID');
+    if (!authToken) missing.push('TWILIO_AUTH_TOKEN');
+    if (!verifySid) missing.push('TWILIO_VERIFY_SERVICE_SID');
+
+    if (missing.length > 0) {
+      console.error('Missing env vars:', missing.join(', '));
+      return { statusCode: 500, body: JSON.stringify({ error: 'SMS service not configured', missing: missing }) };
     }
 
     // Use Twilio Verify API to send verification code
@@ -36,7 +38,7 @@ exports.handler = async function(event) {
     params.append('Channel', 'sms');
 
     const response = await fetch(
-      `https://verify.twilio.com/v2/Services/${TWILIO_VERIFY_SERVICE_SID}/Verifications`,
+      `https://verify.twilio.com/v2/Services/${verifySid}/Verifications`,
       {
         method: 'POST',
         headers: {
